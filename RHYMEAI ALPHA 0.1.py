@@ -1,4 +1,5 @@
 import time
+import sqlite3
 
 def takeinput():
     global takeinput_permstorage_id
@@ -9,18 +10,26 @@ def takeinput():
     n = 0
     while n == 0:
         tempstorage_input = input('RhymeBot doesn\'t know much English. Enter a few words! Enter 1 to quit. ')
+        time.sleep(1)
+        print ('Processing...')
+        time.sleep(1)
         if tempstorage_input == '1':
             n = 1
         else:
             tempstorage_list.append(tempstorage_input)
     takeinput_permstorage_dict['takeinput_permstorage_id' + str(takeinput_permstorage_id)]=tempstorage_list
     takeinput_permstorage_id +=1
+    print('Thanks! RhymeBot is happy now. ')
+    time.sleep(3)
+    print('Teleporting you back to the menu...')
+    time.sleep(3)
+    menu()
     
 def checkrhyme():
-    global checkrhyme_permstorage_dict_cat1      #cat 1 is 50% and above rhyme
-    global checkrhyme_permstorage_dict_cat2      #cat 2 is 40% and sub rhyme
-    global checkrhyme_permstorage_dict_cat3      #cat 3 is 25% and sub rhyme
-    global checkrhyme_permstorage_dict_cat4      #cat 4 is 10% and sub rhyme
+    global checkrhyme_permstorage_dict_cat1
+    global checkrhyme_permstorage_dict_cat2
+    global checkrhyme_permstorage_dict_cat3
+    global checkrhyme_permstorage_dict_cat4
     global takeinput_permstorage_dict
     global takeinput_permstorage_id
     global checkrhyme_permstorage_keys
@@ -29,6 +38,8 @@ def checkrhyme():
     checkrhyme_permstorage_keys = list(takeinput_permstorage_dict.keys())
     checkrhyme_permstorage_vals = list(takeinput_permstorage_dict.values())
     tempstorage_input = input('Enter a word that you want to check if it rhymes with the given data. Enter 1 to quit. ')
+    time.sleep(1)
+    print('Processing...')
     tempstorage_list = []
     tempstoage_dict = {}
     n = 0
@@ -38,25 +49,12 @@ def checkrhyme():
         while n == 0:
             tempstorage_len = len(tempstorage_input)
             for g in range(2, tempstorage_len+1):
-                tempstorage_ending = tempstorage_input[(g-2):tempstorage_len]           #semantic - does not include full word, change?
-                                                                                        #changed
-                                                                                        ##
-                                                                                        #no match for mow to low, lien 61 responsible, fixed, check line 38 (modified)
-                                                                                        #please test
-                                                                                        #SECTION FIXED
+                tempstorage_ending = tempstorage_input[(g-2):tempstorage_len]
                 for value in takeinput_permstorage_dict.values():
                     tempstorage_listlen = len(value)
                     for i in range(tempstorage_listlen):
-                        if (tempstorage_ending in (checkrhyme_permstorage_vals[0])[i]):                             #cannot identify if sliced input is input is a value
-                            n = 1                                                                                   #included in a value; can only identify if sliced
-                                                                                                                    #fix in progress
-                                                                                                                    ##
-                                                                                                                    #list index out of range error, fixed confirmed
-                                                                                                                    ##
-                                                                                                                    #infinited loop, please identify
-                                                                                                                    #debugging in progress
-                                                                                                                    ##
-                                                                                                                    ##SECTION FIXED
+                        if (tempstorage_ending in (checkrhyme_permstorage_vals[0])[i]):    
+                            n = 1
                             tempstorage_list = [(checkrhyme_permstorage_vals[0])[i]]
                             while i < (tempstorage_listlen-1):
                                 if (tempstorage_ending in (checkrhyme_permstorage_vals[0])[i+1]):
@@ -67,32 +65,52 @@ def checkrhyme():
                                     i += 1
                             tempstorage_position = checkrhyme_permstorage_vals.index(value)
                             checkrhyme_permstorage_id = checkrhyme_permstorage_keys[tempstorage_position]
-                            print ('match')
-                            print('position =', tempstorage_position)
-                            print ('position id =', checkrhyme_permstorage_id)                                      #add cat identification
-                            print ('rhyme part is', tempstorage_ending)
+                            print ('Match detected! ')
+                            time.sleep(1)
+                            print('Analyzing... ')
+                            time.sleep(1)
+                            print('Position: ', tempstorage_position)
+                            print ('Position ID: ', checkrhyme_permstorage_id)                                      
+                            print ('Rhyming Part: ', tempstorage_ending)
                             print('matches with' )
-                            print (tempstorage_list)
-                                                                                                                    #semantic - when joe, mow, low
-                                                                                                                    #values and sow inputted,
-                                                                                                                    #match result is ['mow', 'ow']
-                                                                                                                    ##SECTION FIXED
-                                                                                                                    
-                                                                                                                    
-                                                                                                                    #add all rhyming, not just one
-                                                                                                                    #
+                            print (tempstorage_list)                                                                                                               
                             break 
-                        elif i == (tempstorage_listlen-1) and g == tempstorage_len:                                 #responsible for line 39
-                                                                                                                    #SECTION FIXED
-                            print('no match')                                                                       #infinitely prints this, debugging
-                                                                                                                    #fixed, testing
-                                                                                                                    #SECTION FIXED
+                        elif i == (tempstorage_listlen-1) and g == tempstorage_len:                                                                                                                                                  
+                            print('Sorry, no match detected. ')                                                                                                                                                                                
                             n = 1
                             break
+                        time.sleep(3)
+                        input('Press Enter to continue. ')
+                        time.sleep(1.5)
+                        print('Teleporting you back to the menu...')
+                        time.sleep(3)
+                        menu()
                             
                             
 def menu():
+    print('MENU')
     print('=========================')
+    print('Options: ')
+    menuinput = ('1. Input words to teach RhymeBot \n '
+         '2. Check if a word rhymes with an existing word \n '
+         '3. Give feedback on the software \n \n '
+         'Your input: ')
+    time.sleep(1)
+    print('Processing...')
+    time.sleep(1.5)
+    if menuinput == '1':
+        takeinput()
+    elif menuinput == '2':
+        checkrhyme()
+    elif menuinput == '3':
+        print('Sorry, this area is under construction. Check back later! ')
+        time.sleep(4)
+    else:
+        print('Sorry, invalid input. ')
+        time.sleep(3)
+        menu()
+        
+
                                                                                                                     
 def run():
     print('EVOLVEAI INTRODUCES')
@@ -114,6 +132,7 @@ def run():
     print('Great! I love humans! ')
     time.sleep(2)
     print("Why don't I show you around? Press the Enter Key again to get to the menu, where you'll find stuff to do! ")
+    menu()
     
     
     
