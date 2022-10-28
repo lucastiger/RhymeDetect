@@ -79,32 +79,44 @@ def checkrhyme():
                             print('Sorry, no match detected. ')                                                                                                                                                                                
                             n = 1
                             break
-                        time.sleep(3)
-                        input('Press Enter to continue. ')
-                        time.sleep(1.5)
-                        print('Teleporting you back to the menu...')
-                        time.sleep(3)
-                        menu()
+    time.sleep(3)
+    input('Press Enter to continue. ')
+    time.sleep(1.5)
+    print('Teleporting you back to the menu...')
+    time.sleep(3)
+    menu()
                             
                             
 def menu():
+    print ('\n \n')
     print('MENU')
     print('=========================')
     print('Options: ')
-    menuinput = ('1. Input words to teach RhymeBot \n '
+    menuinput = input(' 1. Input words to teach RhymeBot \n '
          '2. Check if a word rhymes with an existing word \n '
-         '3. Give feedback on the software \n \n '
+         '3. Give feedback on the software \n '
+         '4. Quit \n'
          'Your input: ')
     time.sleep(1)
     print('Processing...')
     time.sleep(1.5)
     if menuinput == '1':
+        print('Teleporting you...')
+        time.sleep(2)
         takeinput()
     elif menuinput == '2':
+        print('Teleporting you...')
+        time.sleep(2)
         checkrhyme()
     elif menuinput == '3':
         print('Sorry, this area is under construction. Check back later! ')
         time.sleep(4)
+    elif menuinput == '4':
+        quitinput = input('Are you sure you want to quit! This will not be saved! ')
+        if 'yes' in quitinput.lower():
+            quit('Thank you for your time! ')
+        else:
+            menu()
     else:
         print('Sorry, invalid input. ')
         time.sleep(3)
@@ -121,39 +133,19 @@ def run():
     time.sleep(5)
     print('ALL RIGHTS RESERVED TO EVOLVEAI COPYRIGHT 2022')
     time.sleep(5)
-    print('Hey there! I\'m Rhymebot! ')
+    print('RHYMEBOT: Hey there! I\'m RhymeBot! ')
     time.sleep(3)
-    print('Don\'t worry, I\'m friendly. ')
+    print('RHYMBOT: Don\'t worry, I\'m friendly. ')
     time.sleep(3)
-    print('How about you prove you are a human? I like humans. ')
+    print('RHYMEBOT: How about you prove you are a human? I like humans. ')
     time.sleep(3)
     input('PROMPT: Press the Enter Key to prove to RhymeBot that you are a human. ')
     time.sleep(2)
-    print('Great! I love humans! ')
+    print('RHYMEBOT: Great! I love humans! ')
     time.sleep(2)
-    print("Why don't I show you around? Press the Enter Key again to get to the menu, where you'll find stuff to do! ")
+    input("RHYMEBOT: Why don't I show you around? Press the Enter Key again to get to the menu, where you'll find stuff to do! ")
+    time.sleep(3)
     menu()
+
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-         
-         
-         
-         
-       
-          
+menu()
