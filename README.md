@@ -1,8 +1,8 @@
-# RhymeAI
+# RhymeDetect
 
 Information
 ======
-RhymeAI is an Artificial Intelligence Software. The purpose of RhymeAI is to allow users to find rhyming words of a word the user has inputted through a machine-learning algorithm. The user can provide words that rhyme, can find existing words that rhyme based on existing data, and can confirm or deny if two words that the program believes to rhyme do indeed rhyme.
+RhymeDetect, an open-source software, exhibits a novel way of rhyme detection. A simple, yet sophisticated and scalable program allows one to detect rhyming words either just inputted or from a database that the user can customize. This program uses Artificial Intelligence to enhance the user's experience further. 
 
 Other
 ======
